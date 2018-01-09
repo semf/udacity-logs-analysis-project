@@ -1,5 +1,6 @@
+#!/usr/bin/env python
 """
-PLEASE CREATE VIEW before runnig this module
+PLEASE CREATE VIEW before running this module
 create view viewer as select split_part(path,'/',3) as slug, count(*) as views
 from log where status='200 OK'
 group by path, status order by views desc offset 1;
