@@ -1,16 +1,4 @@
 #!/usr/bin/env python
-"""
-PLEASE CREATE VIEW before running this module
-create view viewer as select split_part(path,'/',3) as slug, count(*) as views
-from log where status='200 OK'
-group by path, status order by views desc offset 1;
-create view responseok as
-select date_trunc('day', time) as "day", count(*) as num
-from log where status='200 OK' group by 1 order by 1;
-create view responsefail as
-select date_trunc('day', time) as "day", count(*) as num
-from log where status='404 NOT FOUND' group by 1 order by 1;
-"""
 
 import psycopg2
 
@@ -60,6 +48,9 @@ def error_ratio(more_than):
 
 
 if __name__ == "__main__":
+    print("What are the most popular three articles of all time?")
     get_popular_article(3)
+    print("\nWho are the most popular article authors of all time?")
     get_popular_author()
+    print("\nOn which days did more than 1% of requests lead to errors?")
     error_ratio(1)
