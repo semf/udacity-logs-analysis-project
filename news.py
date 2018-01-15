@@ -1,4 +1,11 @@
 #!/usr/bin/env python
+"""This module has three methods.
+get_popular_article(num): Return a list of article title and viewers count.
+you can adjust the number of lists with the num vriable.
+get_popular_author: Return a authors list odered by high veiwer number.
+error_ratio: Return a list of days with an error rate greater than
+the variable more_than.
+"""
 
 import psycopg2
 
@@ -6,6 +13,12 @@ DBNAME = "news"
 
 
 def get_popular_article(num):
+    """Print a list of article title and viewers count.
+    Args:
+        num : The number of article list
+    Return:
+        a list of article title and viewers count.
+    """
     db = psycopg2.connect(database=DBNAME)
     c = db.cursor()
     c.execute('''
@@ -19,6 +32,10 @@ def get_popular_article(num):
 
 
 def get_popular_author():
+    """Print a authors list odered by high veiwer number.
+    Return:
+        list from database
+    """
     db = psycopg2.connect(database=DBNAME)
     c = db.cursor()
     c.execute('''
@@ -34,6 +51,10 @@ def get_popular_author():
 
 
 def error_ratio(more_than):
+    """Print a list of days with an error rate greater than
+    the variable more_than.
+    Return:
+        list from database"""
     db = psycopg2.connect(database=DBNAME)
     c = db.cursor()
     c.execute('''

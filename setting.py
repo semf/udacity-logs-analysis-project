@@ -1,4 +1,7 @@
 #!/usr/bin/env python
+"""You must once run this python file before excuting news.py.
+It makes three views about viewer and error create.
+"""
 
 import psycopg2
 
