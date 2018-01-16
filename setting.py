@@ -10,7 +10,7 @@ DBNAME = "news"
 
 if __name__ == "__main__":
     db = psycopg2.connect(database=DBNAME)
-    print("connecting msg:",db)
+    print("connecting msg:", db)
     c = db.cursor()
     c.execute('''create view viewer as select split_part(path,'/',3)
     as slug, count(*) as views
